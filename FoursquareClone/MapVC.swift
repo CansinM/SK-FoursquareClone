@@ -7,14 +7,12 @@
 
 import UIKit
 import MapKit
+import ParseSwift
 
 class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     var locationManager = CLLocationManager()
-    
-    var chosenLatitude = ""
-    var chosenLongitude = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,8 +45,8 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
             
             self.mapView.addAnnotation(annocation)
             
-            self.chosenLatitude = String(coordinates.latitude)
-            self.chosenLongitude = String(coordinates.longitude)
+            PlaceModel.sharedInstance.placeLatitude = String(coordinates.latitude)
+            PlaceModel.sharedInstance.placeLongitude = String(coordinates.longitude)
         }
     }
     
@@ -61,6 +59,34 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     @objc func saveButton() {
         //PARSE
+        let placeModel = PlaceModel.sharedInstance
+        
+        var object = Place()
+        object.name = placeModel.placeName
+        object.type = placeModel.placeType
+        object.atmosphere = placeModel.placeAtmosphere
+        object.latitude = placeModel.placeLatitude
+        object.longitude = placeModel.placeLongitude
+
+        if let imageData = placeModel.placeImage.jpegData(compressionQuality: 0.5) {
+            object.image = try? ParseFile(name: "image.jpg", data: imageData)
+        }
+        
+        object.save { result in
+            switch result {
+            case .success(_):
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "fromMapVCtoPlacesVC", sender: nil)
+                }
+            case .failure(let error):
+                let makeAlert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                makeAlert.addAction(okAction)
+                self.present(makeAlert, animated: true, completion: nil)
+                
+            }
+        }
+        
     }
     
     @objc func backButton() {

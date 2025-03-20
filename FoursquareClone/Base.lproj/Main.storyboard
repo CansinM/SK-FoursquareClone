@@ -103,7 +103,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="b7u-SG-rQL">
-                                <rect key="frame" x="0.0" y="44" width="393" height="808"/>
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -133,7 +133,7 @@
             <objects>
                 <viewController id="CNx-Oq-U4G" customClass="DetailsVC" customModule="FoursquareClone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fie-25-hDQ">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4qy-eu-z1g">
@@ -188,11 +188,11 @@
             <objects>
                 <viewController id="I4p-Ft-aGl" customClass="AddPlaceVC" customModule="FoursquareClone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dxp-7M-UL8">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Place Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4OF-Bt-SeM">
-                                <rect key="frame" x="36" y="105" width="321" height="34"/>
+                                <rect key="frame" x="36" y="61" width="321" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="Yaw-1A-sKH"/>
                                 </constraints>
@@ -200,7 +200,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Place Type" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qXJ-PN-XMU">
-                                <rect key="frame" x="36" y="152" width="321" height="34"/>
+                                <rect key="frame" x="36" y="108" width="321" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="HxO-8a-kKm"/>
                                 </constraints>
@@ -208,7 +208,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Place Atmosphere" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gUf-Mr-Yhn">
-                                <rect key="frame" x="36" y="194" width="321" height="34"/>
+                                <rect key="frame" x="36" y="150" width="321" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="hpi-qc-Q4i"/>
                                 </constraints>
@@ -216,7 +216,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="selectimage" translatesAutoresizingMaskIntoConstraints="NO" id="QBu-1P-Ajk">
-                                <rect key="frame" x="36" y="267" width="321" height="270"/>
+                                <rect key="frame" x="36" y="223" width="321" height="270"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="321" id="1Cd-h9-Rs5"/>
                                     <constraint firstAttribute="height" constant="270" id="uCp-U4-R66"/>
@@ -286,6 +286,7 @@
                     <navigationItem key="navigationItem" id="XFh-LP-IOS"/>
                     <connections>
                         <outlet property="mapView" destination="sBQ-2u-yMc" id="znq-B7-OgJ"/>
+                        <segue destination="aDc-GN-lmt" kind="presentation" identifier="fromMapVCtoPlacesVC" modalPresentationStyle="fullScreen" id="nWq-x9-ZOa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5di-nO-npx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -331,6 +332,10 @@
             <point key="canvasLocation" x="3983.969465648855" y="-28.169014084507044"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="kDe-aE-qXV"/>
+        <segue reference="nWq-x9-ZOa"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="selectimage" width="321" height="270"/>
         <systemColor name="systemBackgroundColor">

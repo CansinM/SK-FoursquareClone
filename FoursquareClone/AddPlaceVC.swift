@@ -25,7 +25,12 @@ class AddPlaceVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
         if placeNameText.text != "" && placeTypeText.text != "" && placeAtmosphereText.text != "" {
             if let chosenImage = placeImageView.image {
                 let placeModel = PlaceModel.sharedInstance
-                placeModel.placeName = placeNameText.text!
+                if let placeName = placeNameText.text, !placeName.isEmpty {
+                    let placeModel = PlaceModel.sharedInstance
+                    placeModel.placeName = placeName
+                } else {
+                    print("Place Name is empty!")
+                }
                 placeModel.placeType = placeTypeText.text!
                 placeModel.placeAtmosphere = placeAtmosphereText.text!
                 placeModel.placeImage = chosenImage
